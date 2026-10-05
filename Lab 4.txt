@@ -1,0 +1,76 @@
+Task 1
+
+
+24 ?- house = house.
+true.
+
+25 ?- house = abc.
+false.
+
+26 ?- edge(a,b) = edge(C,b).
+C = a.
+
+27 ?- edge(a,d) = edge(C,B).
+C = a,
+B = d.
+
+28 ?- edge(C,B) = edge(a,d).
+C = a,
+B = d.
+
+29 ?- edge(A,f(g,h)) = edge(a,B).
+A = a,
+B = f(g, h).
+
+30 ?- edge(A,A) = edge(b,c).
+false.
+
+31 ?- edge(A,A) = edge(b,b).
+A = b.
+
+32 ?- A = B, B = f.
+A = B, B = f.
+
+33 ?- A = B, B = f, A = e.
+false.
+
+Explanation:
+1) Both are the same atom, so they unify.
+2) Two different constants (atoms) never unify.
+3) Same functor and arity, C is a variable so it takes a, and b = b.
+4) Same functor and arity, C is instantiated to a and B to d.
+5) Same as query 4, the order of the two sides does not matter.
+6) A takes a, and B (a variable) unifies with the whole structure f(g,h).
+7) A must be b and c at the same time, the same variable must hold the same value, and b and c are different constants.
+8) Both positions need A = b, which is consistent.
+9) A and B become linked, then B = f, so A is also f.
+10) A and B are linked and both become f, then A = e fails because f and e are different constants.
+
+
+
+Task 2
+
+
+38 ?- consult(['d:/Lab04_family_facts.pl']).
+true.
+
+39 ?- female(X).
+X = sara ;
+X = nora.
+
+40 ?- male(_).
+true.
+
+41 ?- parent(G, P), parent(P, faisal).
+G = ali,
+P = muhammad.
+
+42 ?- parent(ahmad, X), female(X).
+X = sara ;
+X = nora.
+
+43 ?- parent(P, ahmad), parent(P, muhammad).
+P = ali.
+
+44 ?- parent(P, khan), parent(P, nora), male(khan).
+P = ahmad.
