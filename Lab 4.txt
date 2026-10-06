@@ -67,7 +67,8 @@ P = muhammad.
 
 42 ?- parent(ahmad, X), female(X).
 X = sara ;
-X = nora.
+X = nora ;
+false.
 
 43 ?- parent(P, ahmad), parent(P, muhammad).
 P = ali.
